@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bbtf8pjkhhw6o"]
+[gd_scene load_steps=17 format=3 uid="uid://bbtf8pjkhhw6o"]
 
 [ext_resource type="Texture2D" uid="uid://raa4qs8o5ixn" path="res://Assets/Environment/Tilesets/terrainTiles_default.png" id="1_6eo2g"]
 [ext_resource type="Texture2D" uid="uid://55ggdmexbepj" path="res://Assets/Environment/Props/crateMetal.png" id="2_83ji8"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://d0xgkygg413qn" path="res://Scenes/Towers/gun_t_1.tscn" id="6_pwsyy"]
 [ext_resource type="PackedScene" uid="uid://cekcv50g4nl6x" path="res://Scenes/Towers/gun_t_2.tscn" id="7_ven3e"]
 [ext_resource type="PackedScene" uid="uid://bg6ogb0nksjdg" path="res://Scenes/Towers/missle_t_1.tscn" id="8_h2ob2"]
+[ext_resource type="Script" path="res://Scenes/Towers/gun_t_2.gd" id="8_tjapd"]
+[ext_resource type="Script" path="res://Scenes/Towers/missle_t_1.gd" id="10_bgc3s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_exsyu"]
 resource_name = "GrassDesert"
@@ -178,6 +180,8 @@ position = Vector2(787, 430)
 
 [node name="GunT2" parent="TowerContainer" instance=ExtResource("7_ven3e")]
 position = Vector2(677, 279)
+script = ExtResource("8_tjapd")
 
 [node name="MissleT1" parent="TowerContainer" instance=ExtResource("8_h2ob2")]
 position = Vector2(362, 467)
+script = ExtResource("10_bgc3s")
