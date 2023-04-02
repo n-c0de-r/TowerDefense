@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-func set_tower_preview(tower_type: String, mouse_position: Vector2):
+func set_tower_preview(tower_type: String, mouse_position: Vector2, color: Color):
 	var drag_tower: Node2D = load("res://Scenes/Towers/" + tower_type + ".tscn").instantiate()
 	drag_tower.set_name("DragTower")
-	drag_tower.modulate = Color("54ff3cad")
+	drag_tower.modulate = color
 	
 	var control: Control = Control.new()
 	control.add_child(drag_tower, true)
@@ -12,8 +12,8 @@ func set_tower_preview(tower_type: String, mouse_position: Vector2):
 	add_child(control, true)
 	move_child(control, 0)
 
-func update_tower_preview(new_position: Vector2, color: String):
+func update_tower_preview(new_position: Vector2, color: Color):
 	var control: Control = get_node("TowerPreview")
 	control.position = new_position
-	if control.get_node("DragTower").modulate != Color(color):
-		control.get_node("DragTower").modulate = Color(color)
+	if control.get_node("DragTower").modulate != color:
+		control.get_node("DragTower").modulate = color
