@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bg7c7gre5hcdm" path="res://Assets/Towers/towerDefense_tile251.png" id="4_w7ybm"]
 
 [node name="GameScene" type="Node2D"]
-z_index = 1
 script = ExtResource("1_ef1cd")
 
 [node name="Map1" parent="." instance=ExtResource("1_ht8up")]

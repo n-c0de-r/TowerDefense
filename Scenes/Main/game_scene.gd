@@ -8,9 +8,10 @@ var props: Array[Vector2i]
 
 var build_mode_active: bool = false
 var valid_build_position: bool = false
-var build_location: Vector2 = Vars.reset_position
+var build_location: Vector2 = Vars.RESET_POSITION
 var build_type: String
 var overlay_color: Color
+
 
 func _ready():
 	map_node = get_node("Map1") #TODO Map switching
@@ -22,11 +23,13 @@ func _ready():
 	
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", initiate_build_mode_active.bind(i.get_name()))
+	start_next_wave()
 
 func _process(_delta):
 	queue_redraw()
 	if build_mode_active:
 		update_tower_preview()
+
 
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode_active:
@@ -35,15 +38,19 @@ func _unhandled_input(event):
 		verify_and_build(build_location)
 		cancel_build_mode()
 
+
 func _draw():
 	draw_circle(build_location, 100, overlay_color)
 	var arcColor: Color
-	if(overlay_color == Vars.halfGreen):
-		arcColor = Vars.green
+	if(overlay_color == Vars.HALF_GREEN):
+		arcColor = Vars.GREEN
 	else:
-		arcColor = Vars.red
+		arcColor = Vars.RED
 	draw_arc(build_location, 100, 0, 360, 100, arcColor)
 
+##
+## Building Functions
+##
 func initiate_build_mode_active(tower_type: String):
 	if build_mode_active:
 		cancel_build_mode()
@@ -51,26 +58,29 @@ func initiate_build_mode_active(tower_type: String):
 	build_mode_active = true
 	ui.set_tower_preview(build_type, get_global_mouse_position(), overlay_color)
 
+
 func update_tower_preview():
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var tile_coords: Vector2i = map.local_to_map(mouse_position)
 	var tile_position: Vector2 = map.map_to_local(tile_coords)
 	build_location = tile_position
 	
-	if(is_valid_build_position(tile_coords)):
-		overlay_color = Vars.halfRed
-		valid_build_position = true
+	valid_build_position = check_build_position(tile_coords)
+	# Somehow this executes exactly in reverse!
+	if(!valid_build_position):
+		overlay_color = Vars.HALF_GREEN
 	else:
-		overlay_color = Vars.halfGreen
-		valid_build_position = false
+		overlay_color = Vars.HALF_RED
 		
 	ui.update_tower_preview(tile_position, overlay_color)
+
 
 func cancel_build_mode():
 	build_mode_active = false
 	valid_build_position = false
-	build_location = Vars.reset_position
+	build_location = Vars.RESET_POSITION
 	get_node("UI/TowerPreview").free()
+
 
 func verify_and_build(new_location: Vector2):
 	if valid_build_position:
@@ -84,5 +94,13 @@ func verify_and_build(new_location: Vector2):
 		## TODO reduce cash
 		## TODO Update label
 
-func is_valid_build_position(coords: Vector2i) -> bool:
+
+func check_build_position(coords: Vector2i) -> bool:
 	return !roads.has(coords) and !props.has(coords)
+
+##
+## Wave Functions
+###
+func start_next_wave():
+#	var wave_data = retrieve_wave_data()
+	pass
