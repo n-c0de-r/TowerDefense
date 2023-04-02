@@ -1,15 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://bbtf8pjkhhw6o"]
+[gd_scene load_steps=17 format=3 uid="uid://b6lj2071n0rxy"]
 
 [ext_resource type="Texture2D" uid="uid://raa4qs8o5ixn" path="res://Assets/Environment/Tilesets/terrainTiles_default.png" id="1_6eo2g"]
 [ext_resource type="Texture2D" uid="uid://55ggdmexbepj" path="res://Assets/Environment/Props/crateMetal.png" id="2_83ji8"]
 [ext_resource type="Texture2D" uid="uid://djjvk54rn3wgk" path="res://Assets/Environment/Props/crateWood.png" id="3_qvsrl"]
 [ext_resource type="Texture2D" uid="uid://bxcyqw8miacoi" path="res://Assets/Environment/Props/treeBrown_large.png" id="4_qgv2i"]
 [ext_resource type="Texture2D" uid="uid://ncjduo74blqx" path="res://Assets/Environment/Props/treeGreen_large.png" id="5_86f5v"]
-[ext_resource type="PackedScene" uid="uid://d0xgkygg413qn" path="res://Scenes/Towers/gun_t_1.tscn" id="6_pwsyy"]
-[ext_resource type="PackedScene" uid="uid://cekcv50g4nl6x" path="res://Scenes/Towers/gun_t_2.tscn" id="7_ven3e"]
-[ext_resource type="PackedScene" uid="uid://bg6ogb0nksjdg" path="res://Scenes/Towers/missle_t_1.tscn" id="8_h2ob2"]
-[ext_resource type="Script" path="res://Scenes/Towers/gun_t_2.gd" id="8_tjapd"]
-[ext_resource type="Script" path="res://Scenes/Towers/missle_t_1.gd" id="10_bgc3s"]
+[ext_resource type="PackedScene" uid="uid://c2oos55tx2rxn" path="res://Scenes/Towers/GunT1.tscn" id="6_pwsyy"]
+[ext_resource type="PackedScene" uid="uid://cekcv50g4nl6x" path="res://Scenes/Towers/GunT2.tscn" id="7_ven3e"]
+[ext_resource type="PackedScene" uid="uid://bg6ogb0nksjdg" path="res://Scenes/Towers/MissleT1.tscn" id="8_h2ob2"]
+[ext_resource type="Script" path="res://Scenes/Towers/GunT2.gd" id="8_tjapd"]
+[ext_resource type="Script" path="res://Scenes/Towers/MissleT1.gd" id="10_bgc3s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_exsyu"]
 resource_name = "GrassDesert"
