@@ -176,5 +176,5 @@ layer_2/tile_data = PackedInt32Array(589837, 2, 0, 262151, 2, 0, 524296, 4, 0, 5
 
 [node name="TowerContainer" type="Node2D" parent="."]
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_5eotm")
