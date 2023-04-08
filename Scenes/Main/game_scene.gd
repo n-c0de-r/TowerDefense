@@ -42,13 +42,16 @@ func _unhandled_input(event):
 
 
 func _draw():
-	draw_circle(build_location, 100, overlay_color)
-	var arcColor: Color
-	if(overlay_color == Vars.HALF_GREEN):
-		arcColor = Vars.GREEN
-	else:
-		arcColor = Vars.RED
-	draw_arc(build_location, 100, 0, 360, 100, arcColor)
+	if build_type.length() > 0:
+		var turret_range: int = Towers.DATA[build_type]["range"]
+		draw_circle(build_location, turret_range, overlay_color)
+		
+		var arcColor: Color
+		if(overlay_color == Vars.HALF_GREEN):
+			arcColor = Vars.GREEN
+		else:
+			arcColor = Vars.RED
+		draw_arc(build_location, turret_range, 0, 360, turret_range, arcColor)
 
 ##
 ## Building Functions
@@ -89,6 +92,7 @@ func verify_and_build(new_location: Vector2):
 		## TODO check cash
 		var new_tower: Node2D = load("res://Scenes/Towers/" + build_type + ".tscn").instantiate()
 		new_tower.position = new_location
+		new_tower.built = true
 		var coords: Vector2i = map.local_to_map(new_location)
 		new_tower.set_name(build_type + str(coords))
 		map_node.get_node("TowerContainer").add_child(new_tower, true)

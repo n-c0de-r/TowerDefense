@@ -17,3 +17,7 @@ position = Vector2(41, 6)
 
 [node name="Muzzle2" type="Marker2D" parent="Turret"]
 position = Vector2(41, -6)
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Range"]

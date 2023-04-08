@@ -10,11 +10,11 @@ size = Vector2(34, 40)
 loop = false
 script = ExtResource("1_tdaml")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Body" type="CharacterBody2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite" type="Sprite2D" parent="Body"]
 texture = ExtResource("1_3l8gr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="Shape" type="CollisionShape2D" parent="Body"]
 position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_822ye")
