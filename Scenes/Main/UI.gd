@@ -17,3 +17,17 @@ func update_tower_preview(new_position: Vector2, color: Color):
 	control.position = new_position
 	if control.get_node("DragTower").modulate != color:
 		control.get_node("DragTower").modulate = color
+
+
+func _on_play_pause_pressed():
+	if get_parent().current_wave == 0:
+		get_parent().start_next_wave()
+	else:
+		get_tree().paused = !get_tree().paused
+
+
+func _on_speed_up_pressed():
+	if Engine.time_scale == 1.0:
+		Engine.time_scale = 2.0
+	else:
+		Engine.time_scale = 1.0

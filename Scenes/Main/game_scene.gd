@@ -26,7 +26,6 @@ func _ready():
 	
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", initiate_build_mode_active.bind(i.get_name()))
-	start_next_wave()
 
 func _process(_delta):
 	queue_redraw()
