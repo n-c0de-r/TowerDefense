@@ -93,6 +93,7 @@ func verify_and_build(new_location: Vector2):
 		var new_tower: Node2D = load("res://Scenes/Towers/" + build_type + ".tscn").instantiate()
 		new_tower.position = new_location
 		new_tower.built = true
+		new_tower.type = build_type
 		var coords: Vector2i = map.local_to_map(new_location)
 		new_tower.set_name(build_type + str(coords))
 		map_node.get_node("TowerContainer").add_child(new_tower, true)

@@ -1,16 +1,26 @@
 extends Node2D
 
+var type: String
 var enemies: Array[PathFollow2D] = []
 var built: bool = false
+var canFire = true
 
 func _ready():
 	if built:
-		self.get_node("Range/Shape").shape.radius = Towers.DATA[self.name.split("(")[0]]["range"]
+		self.get_node("Range/Shape").shape.radius = Towers.DATA[type]["range"]
 
 func _physics_process(_delta):
 	if enemies.size() > 0 and built:
-		var pos: Vector2 = select_enemy(enemies).position
-		turn(pos)
+		var enemy: PathFollow2D = select_enemy(enemies)
+		turn(enemy.position)
+		if canFire:
+			fire(enemy)
+
+func fire(enemy: PathFollow2D):
+	canFire = false
+	enemy.on_hit(Towers.DATA[type]["damage"])
+	await get_tree().create_timer(Towers.DATA[type]["delay"]).timeout
+	canFire = true
 
 func select_enemy(array: Array[PathFollow2D]) -> PathFollow2D:
 	var index: int = 0
@@ -24,7 +34,6 @@ func select_enemy(array: Array[PathFollow2D]) -> PathFollow2D:
 	return array[max_index]
 
 func turn(enemy_position: Vector2) -> void:
-#	var enemey_pos: Vector2 = get_global_mouse_position()
 	get_node("Turret").look_at(enemy_position)
 
 func _on_range_body_entered(body: CharacterBody2D):
